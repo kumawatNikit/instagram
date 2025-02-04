@@ -11,7 +11,7 @@ export default async function handler(req, res) {
         client_id: "967203745507226",
         client_secret: "da85fe73f6e7241dac0da2835149aa18",
         grant_type: "authorization_code",
-        redirect_uri: "http://localhost:3000/api/auth/instagram",
+        redirect_uri: "https://localhost:3000/api/auth/instagram",
         code
       },
     });

@@ -11,13 +11,13 @@ export default async function handler(req, res) {
         client_id: "967203745507226",
         client_secret: "da85fe73f6e7241dac0da2835149aa18",
         grant_type: "authorization_code",
-        redirect_uri: "https://localhost:3000/api/auth/instagram",
+        redirect_uri: "https://instagram-08di.onrender.com/api/auth/instagram",
         code
       },
     });
 
     const { access_token, user_id } = tokenResponse.data;
-    res.redirect(`http://localhost:3000/?access_token=${access_token}&user_id=${user_id}`);
+    res.redirect(`https://instagram-08di.onrender.com/?access_token=${access_token}&user_id=${user_id}`);
 
     // Fetch user profile
     const userProfile = await axios.get(`https://graph.instagram.com/${user_id}`, {

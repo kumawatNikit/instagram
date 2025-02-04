@@ -5,39 +5,36 @@ export default async function handler(req, res) {
   if (!code) return res.status(400).json({ error: "No authorization code provided" });
 
   try {
-    // Exchange code for an access token
     const tokenResponse = await axios.post("https://api.instagram.com/oauth/access_token", null, {
       params: {
         client_id: "967203745507226",
         client_secret: "da85fe73f6e7241dac0da2835149aa18",
         grant_type: "authorization_code",
-        redirect_uri: "https://instagram-08di.onrender.com/api/auth/instagram",
+        redirect_uri: "https://instagram-08di.onrender.com/api/auth/instagram", 
         code
       },
     });
 
     const { access_token, user_id } = tokenResponse.data;
-    res.redirect(`https://instagram-08di.onrender.com/?access_token=${access_token}&user_id=${user_id}`);
 
-    // Fetch user profile
+    // Step 2: Fetch user profile data
     const userProfile = await axios.get(`https://graph.instagram.com/${user_id}`, {
       params: { fields: "id,username", access_token },
     });
 
-    // Fetch user posts
+    // Step 3: Fetch user posts (media)
     const userMedia = await axios.get(`https://graph.instagram.com/${user_id}/media`, {
       params: { fields: "id,caption,media_type,media_url,timestamp", access_token },
     });
 
-    return res.json({
-      user: userProfile.data,
-      posts: userMedia.data.data,
-    });
+
+    return res.redirect(`https://instagram-08di.onrender.com/?access_token=${access_token}&user_id=${user_id}`);
   } catch (error) {
     console.error("Instagram Auth Error:", error.response?.data || error.message);
     return res.status(500).json({ error: "Authentication failed" });
   }
 }
+
 
 // import axios from "axios";
 

@@ -28,7 +28,7 @@ export default function Home() {
         })
         .finally(() => setLoading(false));
     } else {
-      setLoading(false); // If no access token, stop loading
+      setLoading(false); 
     }
   }, []);
 

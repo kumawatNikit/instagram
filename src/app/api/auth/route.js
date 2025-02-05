@@ -5,12 +5,12 @@ export async function GET(req) {
     const { searchParams } = new URL(req.url);
     const code = searchParams.get("code");
 
-    // if (!code) {
-    //   return new Response(
-    //     JSON.stringify({ error: "No authorization code provided" }),
-    //     { status: 400 }
-    //   );
-    // }
+    if (!code) {
+      return new Response(
+        JSON.stringify({ error: "No authorization code provided" }),
+        { status: 400 }
+      );
+    }
 
     console.log("Instagram OAuth: Exchanging code for access token...");
 

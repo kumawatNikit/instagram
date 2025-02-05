@@ -17,7 +17,7 @@ export async function GET(req) {
         client_id: "967203745507226",
         client_secret: "da85fe73f6e7241dac0da2835149aa18",
         grant_type: "authorization_code",
-        redirect_uri: "https://instagram-08di.onrender.com/",
+        redirect_uri: "https://instagram-08di.onrender.com/api/auth",
         code,
       }),
       { headers: { "Content-Type": "application/x-www-form-urlencoded" } }

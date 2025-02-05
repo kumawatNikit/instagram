@@ -1,5 +1,5 @@
 const CLIENT_ID = "967203745507226";
-const REDIRECT_URI = "https://instagram-08di.onrender.com/api/auth";  
+const REDIRECT_URI = "https://instagram-08di.onrender.com";  
 
 const handleLogin = () => {
   const authUrl = `https://www.instagram.com/oauth/authorize?enable_fb_login=0&force_authentication=1&client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&response_type=code&scope=instagram_business_basic,instagram_business_manage_messages,instagram_business_manage_comments,instagram_business_content_publish,instagram_business_manage_insights`;

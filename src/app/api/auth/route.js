@@ -6,7 +6,7 @@ export async function GET(req) {
     const code = searchParams.get("code");
 
     if (!code) {
-      return Response.redirect("https://instagram-08di.onrender.com/", 302);
+      return Response.redirect("https://instagram-08di.onrender.com/api/auth", 302);
     }
 
     console.log("Instagram OAuth: Exchanging code for access token...");
@@ -14,8 +14,8 @@ export async function GET(req) {
     const tokenResponse = await axios.post(
       "https://api.instagram.com/oauth/access_token",
       new URLSearchParams({
-        client_id: "967203745507226",
-        client_secret: "da85fe73f6e7241dac0da2835149aa18",
+        client_id: "522101310993559",
+        client_secret: "cfbd50500121764fcaa4524a8255752d",
         grant_type: "authorization_code",
         redirect_uri: "https://instagram-08di.onrender.com/api/auth",
         code,

@@ -16,3 +16,12 @@ export default function HomePage() {
     </div>
   );
 }
+// import { signIn } from "next-auth/react";
+
+// export default function LoginButton() {
+//   return (
+//     <button onClick={() => signIn("instagram")}>
+//       Sign in
+//     </button>
+//   );
+// }

@@ -11,9 +11,10 @@ export default function Home() {
     const params = new URLSearchParams(window.location.search);
     const accessToken = params.get("access_token");
     const userId = params.get("user_id");
+console.log('called',accessToken);
 
     if (accessToken && userId) {
-      fetch(`/api/auth/instagram?access_token=${accessToken}&user_id=${userId}`)
+      fetch(`/api/auth/?&access_token=${accessToken}&user_id=${userId}`)
         .then((res) => res.json())
         .then((data) => {
           if (data.error) {

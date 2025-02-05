@@ -7,24 +7,24 @@ export async function GET(req) {
 
     if (!code) {
       return new Response(
-        JSON.stringify({ error: "No authorization code provided" }),
+        JSON.stringify({ error: "No authorization code providedss" }),
         { status: 400 }
       );
     }
 
-    console.log("Instagram OAuth: Exchanging code for access token...");
+    console.log("967203745507226");
 
     // Step 1: Exchange code for an access token
-    const tokenResponse = await axios.post("https://api.instagram.com/oauth/access_token", null, {
-      params: {
+    const tokenResponse = await axios.post("https://api.instagram.com/oauth/access_token", 
+      new URLSearchParams({
         client_id: "967203745507226",
         client_secret: "da85fe73f6e7241dac0da2835149aa18",
         grant_type: "authorization_code",
         redirect_uri: "https://instagram-08di.onrender.com/api/auth",
         code,
-      },
-    });
-
+      }),
+      { headers: { "Content-Type": "application/x-www-form-urlencoded" } }
+    );
     const { access_token, user_id } = tokenResponse.data;
 
     console.log("Instagram OAuth: Fetching user profile...");
